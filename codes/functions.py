@@ -80,43 +80,9 @@ def get_Van_inv(codebook, gets, args):
         fx = cheby_poly(code, order=d1)
         gx = cheby_poly(code, order=d2)
 
-        if args.experiment == 1:
-            Van[i, 0] = 1
-            Van[i, 1] = fx
-            Van[i, 2] = gx
-            Van[i, 3] = gx * fx
-        elif args.experiment == 2:
-            Van[i, 0] = 1
-            Van[i, 1] = fx
-            Van[i, 2] = fx * fx
-
-            Van[i, 3] = gx
-            Van[i, 4] = fx * gx
-            Van[i, 5] = fx * fx * gx
-
-            Van[i, 6] = gx * gx
-            Van[i, 7] = fx * gx * gx
-            Van[i, 8] = fx * fx * gx * gx
-        elif args.experiment == 3:
-            Van[i, 0] = 1
-            Van[i, 1] = fx
-            Van[i, 2] = fx * fx
-            Van[i, 3] = fx * fx * fx
-
-            Van[i, 4] = gx
-            Van[i, 5] = fx * gx
-            Van[i, 6] = fx * fx * gx
-            Van[i, 7] = fx * fx * fx * gx
-
-            Van[i, 8] = gx * gx
-            Van[i, 9] = fx * gx * gx
-            Van[i, 10] = fx * fx * gx * gx
-            Van[i, 11] = fx * fx * fx * gx * gx
-
-            Van[i, 12] = gx * gx * gx
-            Van[i, 13] = fx * gx * gx * gx
-            Van[i, 14] = fx * fx * gx * gx  * gx
-            Van[i, 15] = fx * fx * fx * gx  * gx  * gx
+        for j in range(n):
+            for k in range(m):
+                Van[i, m * j + k] = (fx**k) * (gx**j)
 
     Van_inv = np.linalg.inv(Van)
 

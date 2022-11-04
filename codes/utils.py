@@ -11,6 +11,16 @@ def cheby_poly(input, order=2):  # orderth chebyshev
         return 4 * pow(input, 3) - 3 * input
     elif order == 4:
         return 8 * pow(input, 4) - 8 * pow(input, 2) + 1
+    elif order == 5:
+        return 16 * pow(input, 5) - 20 * pow(input, 3) + 5 * input
+    elif order == 6:
+        return 32 * pow(input, 6) - 48 * pow(input, 4) + 18 * pow(input, 2) - 1
+    elif order == 7:
+        return 64 * pow(input, 7) - 112 * pow(input, 5) + 56 * pow(input, 3) - 7 * input
+    elif order == 8:
+        return 128 * pow(input, 8) - 256 * pow(input, 6) + 160 * pow(input, 4) - 32 * pow(input, 2) + 1
+    elif order == 9:
+        return 256 * pow(input, 9) - 576 * pow(input, 7) + 432 * pow(input, 5) - 120 * pow(input, 3) + 9 * input
     else:
         raise ValueError(f"not supported order {order} for chebyshev polynomial")
 
